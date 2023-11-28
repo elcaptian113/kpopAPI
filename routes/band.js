@@ -5,6 +5,7 @@ const upload = require('../middleware/upload');
 
 router.get('/', controller.getAll);
 router.get('/:id', controller.getById);
-router.get('/name/:value', controller.getByName)
+router.get('/name/:value', controller.getByName);
+router.post('/', controller.create);
 
 module.exports = router;

@@ -53,9 +53,9 @@ create = async (req, res) =>{
         gender: req.body.gender
     };
     try{
-        if(groups.name==null||groups.short_name==null||groups.korean_name==null||
-            groups.debut==null||groups.company==null||groups.current_members==null||
-            groups.original_members==null||groups.active==null||groups.gender==null){
+        if(groups.name==null || groups.korean_name==null || 
+            groups.debut==null || groups.company==null || groups.current_members==null || 
+            groups.original_members==null || groups.active==null || groups.gender==null){
                 throw new Error("Essential fields missing");
             }
             await Groups.create(groups);
