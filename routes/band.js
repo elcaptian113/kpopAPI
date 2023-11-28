@@ -7,5 +7,6 @@ router.get('/', controller.getAll);
 router.get('/:id', controller.getById);
 router.get('/name/:value', controller.getByName);
 router.post('/', controller.create);
+router.put('/', controller.update);
 
 module.exports = router;
