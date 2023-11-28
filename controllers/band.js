@@ -86,7 +86,7 @@ update = async (req, res) =>{
             groups.original_members==null || groups.active==null || groups.gender==null){
                 throw new Error("Essential fields missing");
             }
-            await Groups.create(groups,
+            await Groups.update(groups,
                 {where: { id: id }}
                 );
             res.status(200).json(groups);
@@ -95,5 +95,19 @@ update = async (req, res) =>{
         utilities.formatErrorResponse(res,400,error.message);
     }
 }
+deleting = async (req, res) =>{
+    const id =req.body.id;
+    try{
+        const deleted = await Groups.destroy({where: { id: id }});
+        if (deleted==0) {
+            throw new Error("Id not found");
+         }
+         res.status(200).send("Groups has been deleted");
+    }
+   catch(error){
+        utilities.formatErrorResponse(res,404,error.message);
+   }
+}
 
-module.exports = {getAll, getById, getByName, create, update};
+
+module.exports = {getAll, getById, getByName, create, update, deleting};
