@@ -24,6 +24,36 @@ getAll = async (req, res) =>{
     });
  res.status(200).json(videos);
 }
+getByGroup = async (req, res) =>{
+  const bandName =req.params.value;
+  try{
+  const videos = await Videos.findAll(
+  {where: {groupId: bandName},
+  });
+  if(videos.length==0){
+  throw new Error("Unable to find a Group with ID: " + bandName);
+  }
+  res.status(200).json(videos);
+  }
+  catch(error){
+  utilities.formatErrorResponse(res,400,error.message);
+  }
+}
+getByIdol = async (req, res) =>{
+  const bandName =req.params.value;
+  try{
+  const videos = await Videos.findAll(
+  {where: {idolId: bandName},
+  });
+  if(videos.length==0){
+  throw new Error("Unable to find a Group with ID: " + bandName);
+  }
+  res.status(200).json(videos);
+  }
+  catch(error){
+  utilities.formatErrorResponse(res,400,error.message);
+  }
+}
 create = async (req, res) =>{
   const videos = {
     artist: req.body.artist,
@@ -89,4 +119,4 @@ deleting = async (req, res) =>{
 }
 
 
-module.exports = {getAll, create, update, deleting};
+module.exports = {getAll, create, update, deleting, getByGroup, getByIdol};
