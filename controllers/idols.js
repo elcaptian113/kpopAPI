@@ -20,6 +20,36 @@ getAll = async (req, res) =>{
  res.status(200).json(idols);
 }
 
+getById = async (req, res) =>{
+   const id =req.params.id;
+   try{
+   const idols = await Groups.findByPk(id);
+   if(idols==null || idols.length==0){
+   throw new Error("Unable to find Idol with id: " + id);
+   }
+   res.status(200).json(groups);
+   }
+   catch(error){
+   utilities.formatErrorResponse(res,400,error.message);
+   }
+}
+
+getByGroup = async (req, res) =>{
+   const bandName =req.params.value;
+   try{
+   const idols = await Idols.findAll(
+   {where: {groupId: bandName},
+   });
+   if(idols.length==0){
+   throw new Error("Unable to find a Group with ID: " + bandName);
+   }
+   res.status(200).json(idols);
+   }
+   catch(error){
+   utilities.formatErrorResponse(res,400,error.message);
+   }
+}
+
 create = async (req, res) =>{
    const idols = {
       stage_name: req.body.stage_name,
@@ -93,4 +123,4 @@ deleting = async (req, res) =>{
 }
 
 
-module.exports = {getAll, deleting, update, create};
+module.exports = {getAll, deleting, update, create, getById, getByGroup};
