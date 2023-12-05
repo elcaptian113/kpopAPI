@@ -105,6 +105,13 @@ const upload = require('../middleware/upload');
  *          gender:
  *              type: string
  *              example: F 
+ *  GroupID:
+ *      required:
+ *          - id
+ *      properties:
+ *          id:
+ *              type: integer
+ *              example: 425 
  *  Error:
  *      properties:
  *          status:
@@ -209,10 +216,14 @@ router.get('/name/:value', controller.getByName);
  *      summary: Adds a new Group
  *      description: Adds a Group
  *      tags: [Group]
- *      produces:
- *          - application/json
+ *      parameters:
+ *          - in: body
+ *            name: groups
+ *            schema:
+ *                  type: object
+ *                  $ref: '#/definitions/NewGroup'
  *      responses:
- *          200:
+ *          201:
  *              description: Adds new Group
  *              schema:
  *                  type: object
@@ -231,10 +242,14 @@ router.post('/', controller.create);
  *      summary: Updates Groups using provided ID
  *      description: Updates a Group with a provided ID
  *      tags: [Group]
- *      produces:
- *          - application/json
+ *      parameters:
+ *          - in: body
+ *            name: groups
+ *            schema:
+ *                  type: object
+ *                  $ref: '#/definitions/Group'
  *      responses:
- *          200:
+ *          201:
  *              description: Updates specified Group
  *              schema:
  *                  type: object
@@ -246,6 +261,34 @@ router.post('/', controller.create);
  *                  $ref: '#/definitions/Error'
  */
 router.put('/', controller.update);
+/**
+ * @swagger
+ * /groups/:
+ *  delete:
+ *      summary: Deletes a Group using provided ID
+ *      description: Deletes a Group with a provided ID
+ *      tags: [Group]
+ *      parameters:
+ *          - in: body
+ *            name: id
+ *            schema:
+ *              type: object
+ *              $ref: '#/definitions/GroupID'
+ *            required: true
+ *            description: ID of chosen Group
+ *            example: 3
+ *      responses:
+ *          200:
+ *             description: Deletes specified Group
+ *             schema:
+ *                  type: object
+ *                  $ref: '#/definitions/Group'
+ *          400:
+ *              description: error
+ *              schema:
+ *                  type: object
+ *                  $ref: '#/definitions/Error'
+ */
 router.delete('/', controller.deleting);
 
 module.exports = router;
