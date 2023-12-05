@@ -224,6 +224,27 @@ router.get('/name/:value', controller.getByName);
  *                  $ref: '#/definitions/Error'
  */
 router.post('/', controller.create);
+/**
+ * @swagger
+ * /groups/:
+ *  put:
+ *      summary: Updates Groups using provided ID
+ *      description: Updates a Group with a provided ID
+ *      tags: [Group]
+ *      produces:
+ *          - application/json
+ *      responses:
+ *          200:
+ *              description: Updates specified Group
+ *              schema:
+ *                  type: object
+ *                  $ref: '#/definitions/Group'
+ *          400:
+ *              description: error
+ *              schema:
+ *                  type: object
+ *                  $ref: '#/definitions/Error'
+ */
 router.put('/', controller.update);
 router.delete('/', controller.deleting);
 
