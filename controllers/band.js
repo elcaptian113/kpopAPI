@@ -1,6 +1,8 @@
 const router = require('../routes/band');
 const utilities = require('../utilities/utility');
 const db = require('../models');
+const fs = require('fs');
+const path = require('path');
 
 const Groups = db.band;
 
@@ -51,7 +53,7 @@ create = async (req, res) =>{
         fanclub_name: req.body.fanclub_name,
         active: req.body.active,
         gender: req.body.gender,
-        image: path.join('/public/images/', req.file.filename)
+        image: path.join('/public/images', req.file.filename)
     };
     try{
         if(groups.name==null || groups.korean_name==null || 
@@ -80,7 +82,7 @@ update = async (req, res) =>{
         fanclub_name: req.body.fanclub_name,
         active: req.body.active,
         gender: req.body.gender,
-        image: path.join('/public/images/', req.file.filename)
+        image: path.join('/public/images', req.file.filename)
     };
     try{
         if(groups.name==null || groups.korean_name==null || 
