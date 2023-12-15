@@ -234,7 +234,7 @@ router.get('/name/:value', controller.getByName);
  *                  type: object
  *                  $ref: '#/definitions/Error'
  */
-router.post('/', controller.create);
+router.post('/', upload.single("image"),controller.create);
 /**
  * @swagger
  * /groups/:
@@ -260,7 +260,7 @@ router.post('/', controller.create);
  *                  type: object
  *                  $ref: '#/definitions/Error'
  */
-router.put('/', controller.update);
+router.put('/', upload.single("image"),controller.update);
 /**
  * @swagger
  * /groups/:

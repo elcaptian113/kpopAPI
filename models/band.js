@@ -31,6 +31,9 @@ module.exports = (sequelize, Sequelize) => {
     gender: {
         type: Sequelize.STRING
     },
+    image: {
+        type: Sequelize.BLOB
+    },
     },
     {
     timestamps: false,

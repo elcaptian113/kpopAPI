@@ -50,7 +50,8 @@ create = async (req, res) =>{
         original_members: req.body.original_members,
         fanclub_name: req.body.fanclub_name,
         active: req.body.active,
-        gender: req.body.gender
+        gender: req.body.gender,
+        image: path.join('/public/images/', req.file.filename)
     };
     try{
         if(groups.name==null || groups.korean_name==null || 
@@ -78,7 +79,8 @@ update = async (req, res) =>{
         original_members: req.body.original_members,
         fanclub_name: req.body.fanclub_name,
         active: req.body.active,
-        gender: req.body.gender
+        gender: req.body.gender,
+        image: path.join('/public/images/', req.file.filename)
     };
     try{
         if(groups.name==null || groups.korean_name==null || 

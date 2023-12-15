@@ -61,7 +61,8 @@ create = async (req, res) =>{
       birthplace: req.body.birthplace,
       other_group: req.body.other_group,
       gender: req.body.gender,
-      groupId: req.body.groupId
+      groupId: req.body.groupId,
+      image: path.join('/public/images/', req.file.filename)
    };
    try{
        if(idols.stage_name==null || idols.full_name==null || 
@@ -90,7 +91,8 @@ update = async (req, res) =>{
       birthplace: req.body.birthplace,
       other_group: req.body.other_group,
       gender: req.body.gender,
-      groupId: req.body.groupId
+      groupId: req.body.groupId,
+      image: path.join('/public/images/', req.file.filename)
    };
    try{
        if(idols.stage_name==null || idols.full_name==null || 

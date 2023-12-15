@@ -28,6 +28,9 @@ module.exports = (sequelize, Sequelize, groups) => {
     gender: {
         type: Sequelize.STRING
     },
+    image: {
+        type: Sequelize.BLOB
+    },
     },
     {
     timestamps: false,
