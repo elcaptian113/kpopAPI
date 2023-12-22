@@ -23,11 +23,18 @@ getAll = async (req, res) =>{
 getById = async (req, res) =>{
    const id =req.params.id;
    try{
-   const idols = await Groups.findByPk(id);
+   const idols = await Idols.findByPk(id,{
+      attributes: { exclude: ['groupId']},
+    include: [{
+    model: Groups,
+    attributes: { include: ['name','short_name','korean_name'], exclude: ['debut','company','current_members','original_members','fanclub_name','active','gender']},
+    required: true
+    }]
+   })
    if(idols==null || idols.length==0){
    throw new Error("Unable to find Idol with id: " + id);
    }
-   res.status(200).json(groups);
+   res.status(200).json(idols);
    }
    catch(error){
    utilities.formatErrorResponse(res,400,error.message);
