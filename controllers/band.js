@@ -7,7 +7,7 @@ const path = require('path');
 const Groups = db.band;
 
 getAll = async (req, res) =>{
- const groups = await Groups.findAll();
+ const groups = await Groups.findAll({order: ['name']});
  res.status(200).json(groups);
 }
 

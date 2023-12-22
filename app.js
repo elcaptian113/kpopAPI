@@ -2,7 +2,6 @@ const express = require('express');
 const logger = require('morgan');
 const groupsRouter = require('./routes/band');
 const idolsRouter = require('./routes/idols');
-const videosRouter = require('./routes/videos');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const cors = require('cors');
@@ -37,7 +36,6 @@ app.get("/", (req, res) => {
 app.use("/public", express.static(__dirname + '/public'));
 app.use("/groups", groupsRouter);
 app.use("/idols", idolsRouter);
-app.use("/videos", videosRouter);
 
 
 

@@ -1,7 +1,7 @@
 const config = require("../config/config");
 const Groups = require("./band");
 const Idols = require("./idols");
-const Videos = require("./videos");
+
 
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(
@@ -29,6 +29,5 @@ db.Sequelize = Sequelize;
 
 db.band = Groups(sequelize, Sequelize);
 db.idols = Idols(sequelize, Sequelize, db.band);
-db.videos = Videos(sequelize, Sequelize, db.band, db.idols);
 
 module.exports = db;
