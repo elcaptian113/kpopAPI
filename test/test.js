@@ -78,7 +78,8 @@ describe('Unit tests for KPOP API', () =>{
                 original_members: 6,
                 fanclub_name: "TTG",
                 active: "yes",
-                gender: "M"
+                gender: "M",
+                image: "//public///images//clear/1702641738366-noImage.jpg"
             }
             chai.request(server)
             .post("/groups")
@@ -96,6 +97,7 @@ describe('Unit tests for KPOP API', () =>{
                 response.body.should.have.property('fanclub_name').eq("TTG");
                 response.body.should.have.property('active').eq("yes");
                 response.body.should.have.property('gender').eq("M");
+                response.body.should.have.property('image').eq("//public///images//clear/1702641738366-noImage.jpg");
                 done();
             });
         });
