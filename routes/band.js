@@ -235,6 +235,7 @@ router.get('/name/:value', controller.getByName);
  *                  $ref: '#/definitions/Error'
  */
 router.post('/', upload.single("image"),controller.create);
+
 /**
  * @swagger
  * /groups/:
@@ -261,6 +262,7 @@ router.post('/', upload.single("image"),controller.create);
  *                  $ref: '#/definitions/Error'
  */
 router.put('/', upload.single("image"),controller.update);
+
 /**
  * @swagger
  * /groups/:
