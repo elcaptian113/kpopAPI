@@ -197,7 +197,7 @@ router.get('/:id', controller.getById);
  *                  type: object
  *                  $ref: '#/definitions/Error'
  */
-router.get('/name/:value', controller.getByGroup);
+router.get('/group/:value', controller.getByGroup);
 
 /**
  * @swagger
