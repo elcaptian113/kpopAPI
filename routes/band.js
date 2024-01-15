@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 const upload = require('../middleware/upload');
 
+//create URL routing for all endpoints - create API documentation using swagger
 
 /**
  * @swagger

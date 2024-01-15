@@ -1,3 +1,4 @@
+//ORM - define model structure for SQL interaction
 module.exports = (sequelize, Sequelize) => {
     const Groups = sequelize.define("groups",
     {

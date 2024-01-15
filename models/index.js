@@ -2,7 +2,7 @@ const config = require("../config/config");
 const Groups = require("./band");
 const Idols = require("./idols");
 
-
+//set ORM credentials
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(
  config.DB,
@@ -13,6 +13,7 @@ const sequelize = new Sequelize(
  port: config.PORT
 });
 
+//set ORM process for connections
 sequelize
  .authenticate()
  .then(() => {
@@ -24,6 +25,7 @@ sequelize
 
 const db = {};
 
+//initialise ORM and object models
 db.Sequelize = Sequelize;
 
 

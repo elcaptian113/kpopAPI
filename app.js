@@ -14,7 +14,7 @@ app.use(cors());
 app.get("/", (req, res) => {
     res.json( "BackEnd server for K-POP Artist REST API");
     })
-
+    //declare API documentation
     const swaggerDefinition = {
         info: {
             title: 'K-POP API',
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
     
     const swaggerSpec = swaggerJsdoc(options);
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
+//set url routes
 app.use("/public", express.static(__dirname + '/public'));
 app.use("/groups", groupsRouter);
 app.use("/idols", idolsRouter);

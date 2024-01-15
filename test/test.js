@@ -9,7 +9,10 @@ chai.use(chaiHttp);
 
 describe('Unit tests for KPOP API', () =>{
 
-
+    //enpoint unit tests
+    //declare endpoint
+    //set affirmation
+    //set all test parameters
     describe("Get endpoint", () => {
         it("it should GET all the Groups", (done) =>{
             chai.request(server)

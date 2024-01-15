@@ -1,6 +1,7 @@
 const multer = require('multer');
 const path = require('path');
 
+//set filepath and filename for image uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, '../public/images'));
@@ -10,6 +11,7 @@ const storage = multer.diskStorage({
     }
 });
 
+//set function to filter files to ensure correct type
 const fileFilter = (req, file, cb) => {
     if (file.mimetype.startsWith('image')){
         cb(null, true);
@@ -19,6 +21,7 @@ const fileFilter = (req, file, cb) => {
     }
 };
 
+//set upload process
 const upload = multer({
     storage: storage,
     fileFilter: fileFilter

@@ -1,3 +1,4 @@
+//import file dependencies for endpoints
 const router = require('../routes/band');
 const utilities = require('../utilities/utility');
 const db = require('../models');
@@ -6,11 +7,13 @@ const path = require('path');
 
 const Groups = db.band;
 
+//GET all endpoint
 getAll = async (req, res) =>{
  const groups = await Groups.findAll({order: ['name']});
  res.status(200).json(groups);
 }
 
+//GET all by ID endpoint
 getById = async (req, res) =>{
     const id =req.params.id;
     try{
@@ -25,6 +28,7 @@ getById = async (req, res) =>{
     }
 }
 
+//GET all by groups NAME endpoint
 getByName = async (req, res) =>{
     const bandName =req.params.value;
     try{
@@ -41,6 +45,7 @@ getByName = async (req, res) =>{
     }
 }
 
+//POST endpoint for group creation
 create = async (req, res) =>{
     const groups = {
         name: req.body.name,
@@ -69,6 +74,7 @@ create = async (req, res) =>{
     }
 }
 
+//PUT endpoint for updating existing group records
 update = async (req, res) =>{
     const id =req.body.id;
     const groups = {
@@ -99,6 +105,8 @@ update = async (req, res) =>{
         utilities.formatErrorResponse(res,400,error.message);
     }
 }
+
+//DELETE endpoint
 deleting = async (req, res) =>{
     const id =req.body.id;
     try{
@@ -113,5 +121,5 @@ deleting = async (req, res) =>{
    }
 }
 
-
+//export all functions to enable access by other files
 module.exports = {getAll, getById, getByName, create, update, deleting};
